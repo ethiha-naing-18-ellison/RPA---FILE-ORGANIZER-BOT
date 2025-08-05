@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}File Organizer Bot - Page Not Found{% endblock %}
+
+{% block subtitle %}Oops! Page not found{% endblock %}
+
+{% block content %}
+<div class="error-container" style="text-align: center;">
+    <div class="summary-box">
+        <div style="font-size: 8em; margin-bottom: 20px;">🤔</div>
+        
+        <h2 style="color: #e74c3c; margin-bottom: 20px;">404 - Page Not Found</h2>
+        
+        <p style="font-size: 1.2em; color: #7f8c8d; margin-bottom: 30px;">
+            The page you're looking for doesn't exist or has been moved.
+        </p>
+        
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <p style="color: #6c757d;">
+                Don't worry! You can go back to the home page and organize your files.
+            </p>
+        </div>
+        
+        <a href="{{ url_for('index') }}" class="btn">
+            🏠 Back to Home
+        </a>
+    </div>
+</div>
+{% endblock %}

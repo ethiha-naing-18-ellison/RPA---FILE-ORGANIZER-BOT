@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}File Organizer Bot - Server Error{% endblock %}
+
+{% block subtitle %}Something went wrong{% endblock %}
+
+{% block content %}
+<div class="error-container" style="text-align: center;">
+    <div class="summary-box">
+        <div style="font-size: 8em; margin-bottom: 20px;">😵</div>
+        
+        <h2 style="color: #e74c3c; margin-bottom: 20px;">500 - Internal Server Error</h2>
+        
+        <p style="font-size: 1.2em; color: #7f8c8d; margin-bottom: 30px;">
+            Something went wrong on our end. Please try again later.
+        </p>
+        
+        <div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin: 20px 0;">
+            <p style="color: #6c757d;">
+                If the problem persists, please check:
+            </p>
+            <ul style="text-align: left; margin-top: 10px; color: #6c757d;">
+                <li>That the folder path you entered is valid</li>
+                <li>That you have permission to access the folder</li>
+                <li>That the folder is not currently in use by another program</li>
+            </ul>
+        </div>
+        
+        <a href="{{ url_for('index') }}" class="btn">
+            🏠 Try Again
+        </a>
+    </div>
+</div>
+{% endblock %}

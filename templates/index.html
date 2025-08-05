@@ -1,0 +1,187 @@
+{% extends "base.html" %}
+
+{% block title %}File Organizer Bot - Home{% endblock %}
+
+{% block subtitle %}Choose a folder to organize your files{% endblock %}
+
+{% block content %}
+<div class="form-container">
+    <h2 style="color: #2c3e50; margin-bottom: 20px; text-align: center;">📁 Select Folder to Organize</h2>
+    
+    <form method="POST" action="{{ url_for('organize') }}">
+        <div class="form-group">
+            <label for="folder_path">📍 Folder Path:</label>
+            <input 
+                type="text" 
+                id="folder_path" 
+                name="folder_path" 
+                placeholder="e.g., C:\Users\YourUsername\AnyFolder or D:\MyFiles" 
+                required 
+                autofocus
+                style="width: 100%;"
+            >
+            <small style="color: #6c757d; display: block; margin-top: 5px;">
+                💡 Enter the complete path to the folder you want to organize
+            </small>
+            
+            <div style="margin-top: 10px; padding: 10px; background: #f8f9fa; border-radius: 5px; font-size: 0.9em;">
+                <strong style="color: #2c3e50;">📝 Path Examples:</strong><br>
+                <span style="color: #6c757d;">
+                    • <code>C:\Users\YourUsername\Downloads</code><br>
+                    • <code>C:\Users\YourUsername\Documents</code><br>
+                    • <code>C:\Projects\MyProject</code><br>
+                    • <code>D:\Files\ToOrganize</code><br>
+                    <small style="color: #6c757d;">Enter the complete path to ANY folder you want to organize</small>
+                </span>
+            </div>
+        </div>
+        
+        <div style="text-align: center;">
+            <button type="submit" class="btn">
+                🚀 Run Organizer
+            </button>
+        </div>
+    </form>
+</div>
+
+<div class="summary-box" style="margin-top: 40px;">
+    <h3 style="color: #2c3e50; margin-bottom: 15px;">ℹ️ How it works:</h3>
+    
+    <div class="summary-item">
+        <strong>📂 Folder Structure:</strong> Creates an "Organized_Files" folder in your selected directory
+    </div>
+    
+    <div class="summary-item">
+        <strong>🗂️ File Categories:</strong> Sorts files into PDFs, Images, Excel, Word, PowerPoint, Text, and Others
+    </div>
+    
+    <div class="summary-item">
+        <strong>🔄 Smart Handling:</strong> Automatically renames duplicate files to prevent overwriting
+    </div>
+    
+    <div class="summary-item">
+        <strong>🛡️ Safe Operation:</strong> Only moves files, never deletes them
+    </div>
+</div>
+
+<div class="summary-box">
+    <h3 style="color: #2c3e50; margin-bottom: 15px;">📝 Supported File Types:</h3>
+    
+    <div class="stats-grid">
+        <!-- Documents -->
+        <div class="stat-card">
+            <div class="stat-label">📄 PDFs</div>
+            <div style="font-size: 0.8em; color: #7f8c8d;">.pdf</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">📝 Word</div>
+            <div style="font-size: 0.8em; color: #7f8c8d;">.doc, .docx, .rtf</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">📊 Excel</div>
+            <div style="font-size: 0.8em; color: #7f8c8d;">.xls, .xlsx, .csv</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">🎨 PowerPoint</div>
+            <div style="font-size: 0.8em; color: #7f8c8d;">.ppt, .pptx</div>
+        </div>
+        
+        <!-- Media -->
+        <div class="stat-card">
+            <div class="stat-label">🖼️ Images</div>
+            <div style="font-size: 0.8em; color: #7f8c8d;">.jpg, .png, .gif, .svg</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">🎥 Videos</div>
+            <div style="font-size: 0.8em; color: #7f8c8d;">.mp4, .avi, .mkv, .mov</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">🎵 Audio</div>
+            <div style="font-size: 0.8em; color: #7f8c8d;">.mp3, .wav, .flac, .aac</div>
+        </div>
+        
+        <!-- Archives & Executables -->
+        <div class="stat-card">
+            <div class="stat-label">🗜️ Archives</div>
+            <div style="font-size: 0.8em; color: #7f8c8d;">.zip, .rar, .7z, .tar</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">⚙️ Executables</div>
+            <div style="font-size: 0.8em; color: #7f8c8d;">.exe, .msi, .apk, .dmg</div>
+        </div>
+        
+        <!-- Programming -->
+        <div class="stat-card">
+            <div class="stat-label">💻 Code</div>
+            <div style="font-size: 0.8em; color: #7f8c8d;">.py, .js, .java, .cpp</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">🌐 Web</div>
+            <div style="font-size: 0.8em; color: #7f8c8d;">.html, .css, .php, .json</div>
+        </div>
+        
+        <!-- Design & Others -->
+        <div class="stat-card">
+            <div class="stat-label">🎨 Design</div>
+            <div style="font-size: 0.8em; color: #7f8c8d;">.psd, .ai, .sketch, .fig</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">🔤 Fonts</div>
+            <div style="font-size: 0.8em; color: #7f8c8d;">.ttf, .otf, .woff</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">📚 Ebooks</div>
+            <div style="font-size: 0.8em; color: #7f8c8d;">.epub, .mobi, .pdf</div>
+        </div>
+        
+        <!-- System & Technical -->
+        <div class="stat-card">
+            <div class="stat-label">💽 Disk Images</div>
+            <div style="font-size: 0.8em; color: #7f8c8d;">.iso, .img, .vhd</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-label">🛠️ System</div>
+            <div style="font-size: 0.8em; color: #7f8c8d;">.dll, .sys, .cfg</div>
+        </div>
+    </div>
+    
+    <div style="text-align: center; margin-top: 20px;">
+        <h4 style="color: #2c3e50; margin-bottom: 10px;">📁 Complete Category List:</h4>
+        <div style="background: #f8f9fa; padding: 15px; border-radius: 8px; font-size: 0.9em; color: #6c757d; line-height: 1.5;">
+            <strong>Documents:</strong> PDFs, Word, Excel, PowerPoint, Text<br>
+            <strong>Media:</strong> Images, Videos, Audio<br>
+            <strong>Archives:</strong> ZIP, RAR, 7Z, TAR and more<br>
+            <strong>Development:</strong> Code, Web, Data files<br>
+            <strong>Design:</strong> Photoshop, Illustrator, CAD, 3D Models<br>
+            <strong>System:</strong> Executables, Fonts, Certificates, Backups<br>
+            <strong>Communication:</strong> Email, Calendar, Contacts<br>
+            <strong>Virtual:</strong> Disk Images, VM files<br>
+            <strong>Others:</strong> Any unrecognized file types
+        </div>
+    </div>
+</div>
+
+<script>
+// Auto-focus the input field when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    const folderPathInput = document.getElementById('folder_path');
+    folderPathInput.focus();
+});
+
+// Add some interactivity
+document.querySelector('form').addEventListener('submit', function(e) {
+    const folderPath = document.getElementById('folder_path').value.trim();
+    
+    if (!folderPath) {
+        e.preventDefault();
+        alert('Please enter a folder path!');
+        return;
+    }
+    
+    // Show loading state
+    const submitButton = document.querySelector('button[type="submit"]');
+    submitButton.innerHTML = '⏳ Organizing...';
+    submitButton.disabled = true;
+});
+</script>
+{% endblock %}

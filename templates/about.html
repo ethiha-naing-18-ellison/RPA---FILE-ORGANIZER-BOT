@@ -1,0 +1,162 @@
+{% extends "base.html" %}
+
+{% block title %}File Organizer Bot - About{% endblock %}
+
+{% block subtitle %}Learn more about the File Organizer Bot{% endblock %}
+
+{% block content %}
+<div class="about-container">
+    <div class="summary-box">
+        <h2 style="color: #2c3e50; margin-bottom: 20px; text-align: center;">🤖 About File Organizer Bot</h2>
+        
+        <p style="font-size: 1.1em; line-height: 1.6; color: #34495e; margin-bottom: 20px;">
+            File Organizer Bot is a powerful yet simple tool designed to help you organize your messy folders automatically. 
+            It categorizes your files by type and moves them into organized subfolders, making it easy to find what you need.
+        </p>
+    </div>
+    
+    <div class="summary-box">
+        <h3 style="color: #2c3e50; margin-bottom: 15px;">🚀 Features</h3>
+        
+        <div class="summary-item">
+            <strong>🎯 Smart Categorization:</strong> Automatically sorts files by type (PDFs, Images, Documents, etc.)
+        </div>
+        
+        <div class="summary-item">
+            <strong>🛡️ Safe Operation:</strong> Never deletes files - only moves them to organized folders
+        </div>
+        
+        <div class="summary-item">
+            <strong>🔄 Duplicate Handling:</strong> Renames duplicate files automatically to prevent overwriting
+        </div>
+        
+        <div class="summary-item">
+            <strong>🌐 Web Interface:</strong> Easy-to-use browser-based interface for convenience
+        </div>
+        
+        <div class="summary-item">
+            <strong>📊 Detailed Reports:</strong> Shows exactly what was organized and where
+        </div>
+    </div>
+    
+    <div class="summary-box">
+        <h3 style="color: #2c3e50; margin-bottom: 15px;">📁 File Categories</h3>
+        
+        <div class="stats-grid">
+            <!-- Documents -->
+            <div class="stat-card">
+                <div class="stat-label">📄 PDFs</div>
+                <div style="font-size: 0.8em; color: #7f8c8d;">.pdf files</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">📝 Word</div>
+                <div style="font-size: 0.8em; color: #7f8c8d;">.doc, .docx, .rtf</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">📊 Excel</div>
+                <div style="font-size: 0.8em; color: #7f8c8d;">.xls, .xlsx, .csv</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">🎨 PowerPoint</div>
+                <div style="font-size: 0.8em; color: #7f8c8d;">.ppt, .pptx</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">📋 Text</div>
+                <div style="font-size: 0.8em; color: #7f8c8d;">.txt, .md, .log</div>
+            </div>
+            
+            <!-- Media -->
+            <div class="stat-card">
+                <div class="stat-label">🖼️ Images</div>
+                <div style="font-size: 0.8em; color: #7f8c8d;">.jpg, .png, .gif, .svg</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">🎥 Videos</div>
+                <div style="font-size: 0.8em; color: #7f8c8d;">.mp4, .avi, .mkv, .mov</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">🎵 Audio</div>
+                <div style="font-size: 0.8em; color: #7f8c8d;">.mp3, .wav, .flac</div>
+            </div>
+            
+            <!-- Development -->
+            <div class="stat-card">
+                <div class="stat-label">💻 Code</div>
+                <div style="font-size: 0.8em; color: #7f8c8d;">.py, .js, .java, .cpp</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">🌐 Web</div>
+                <div style="font-size: 0.8em; color: #7f8c8d;">.html, .css, .php</div>
+            </div>
+            
+            <!-- Archives & System -->
+            <div class="stat-card">
+                <div class="stat-label">🗜️ Archives</div>
+                <div style="font-size: 0.8em; color: #7f8c8d;">.zip, .rar, .7z, .tar</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">⚙️ Executables</div>
+                <div style="font-size: 0.8em; color: #7f8c8d;">.exe, .msi, .apk</div>
+            </div>
+        </div>
+        
+        <div style="margin-top: 20px; background: #f8f9fa; padding: 15px; border-radius: 8px;">
+            <h4 style="color: #2c3e50; margin-bottom: 10px;">📋 Complete Categories:</h4>
+            <div style="font-size: 0.9em; color: #6c757d; line-height: 1.8;">
+                <strong>📄 Documents:</strong> PDFs, Word, Excel, PowerPoint, Text files<br>
+                <strong>🎥 Media:</strong> Images, Videos, Audio files<br>
+                <strong>🗜️ Archives:</strong> ZIP, RAR, 7Z, TAR and other compressed files<br>
+                <strong>⚙️ Executables:</strong> EXE, MSI, APK, DMG and installer files<br>
+                <strong>💻 Development:</strong> Code files (Python, JavaScript, Java, C++, etc.)<br>
+                <strong>🌐 Web:</strong> HTML, CSS, PHP, JSON and web-related files<br>
+                <strong>🎨 Design:</strong> Photoshop, Illustrator, Sketch, CAD files<br>
+                <strong>🔤 Fonts:</strong> TTF, OTF, WOFF font files<br>
+                <strong>📚 Ebooks:</strong> EPUB, MOBI, AZW ebook files<br>
+                <strong>💽 System:</strong> Disk images, system files, certificates<br>
+                <strong>📧 Communication:</strong> Email, calendar and contact files<br>
+                <strong>📦 Others:</strong> Any files that don't fit other categories
+            </div>
+        </div>
+        
+        <div style="text-align: center; margin-top: 15px; color: #7f8c8d;">
+            <small>Files that don't match any category go into "Others" folder</small>
+        </div>
+    </div>
+    
+    <div class="summary-box">
+        <h3 style="color: #2c3e50; margin-bottom: 15px;">⚙️ Technical Details</h3>
+        
+        <div class="summary-item">
+            <strong>🐍 Built with Python:</strong> Uses Flask for the web interface and standard libraries for file operations
+        </div>
+        
+        <div class="summary-item">
+            <strong>🌐 Local Server:</strong> Runs on http://localhost:5000 for security and privacy
+        </div>
+        
+        <div class="summary-item">
+            <strong>🔒 Privacy First:</strong> All processing happens locally on your computer
+        </div>
+        
+        <div class="summary-item">
+            <strong>📱 Responsive Design:</strong> Works on desktop and mobile browsers
+        </div>
+    </div>
+    
+    <div class="summary-box" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+        <h3 style="margin-bottom: 15px;">💡 How to Use</h3>
+        <ol style="line-height: 1.8; font-size: 1.1em;">
+            <li>Enter the full path to the folder you want to organize</li>
+            <li>Click "Run Organizer" and wait for the process to complete</li>
+            <li>Review the results and find your organized files in the new "Organized_Files" folder</li>
+            <li>Enjoy your newly organized digital space! 🎉</li>
+        </ol>
+    </div>
+    
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="{{ url_for('index') }}" class="btn">
+            🏠 Back to Home
+        </a>
+    </div>
+</div>
+{% endblock %}

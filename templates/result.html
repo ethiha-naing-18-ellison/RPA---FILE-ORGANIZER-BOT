@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block title %}File Organizer Bot - Results{% endblock %}
+
+{% block subtitle %}Organization Complete!{% endblock %}
+
+{% block content %}
+<div class="result-container">
+    {% if success %}
+        <div class="alert alert-success">
+            ✅ {{ message }}
+        </div>
+        
+        <div class="summary-box">
+            <h2 style="color: #2c3e50; margin-bottom: 20px; text-align: center;">📊 Organization Summary</h2>
+            
+            <div class="summary-item">
+                <strong>📂 Selected Folder:</strong>
+                <div class="path-display">{{ folder_path }}</div>
+            </div>
+            
+            <div class="summary-item">
+                <strong>📁 Organized Files Location:</strong>
+                <div class="path-display">{{ organized_path }}</div>
+            </div>
+            
+            <div class="summary-item">
+                <strong>📈 Total Files Moved:</strong> 
+                <span style="color: #27ae60; font-size: 1.5em; font-weight: bold;">{{ total_files }}</span>
+            </div>
+        </div>
+        
+        {% if stats %}
+        <div class="summary-box">
+            <h3 style="color: #2c3e50; margin-bottom: 15px;">📋 Files by Category:</h3>
+            
+            <div class="stats-grid">
+                {% for category, count in stats.items() %}
+                <div class="stat-card">
+                    <div class="stat-number">{{ count }}</div>
+                    <div class="stat-label">
+                        {% if category == 'PDFs' %}📄 PDFs{% endif %}
+                        {% if category == 'Word' %}📝 Word{% endif %}
+                        {% if category == 'Excel' %}📊 Excel{% endif %}
+                        {% if category == 'PowerPoint' %}🎨 PowerPoint{% endif %}
+                        {% if category == 'Text' %}📋 Text{% endif %}
+                        {% if category == 'Images' %}🖼️ Images{% endif %}
+                        {% if category == 'Videos' %}🎥 Videos{% endif %}
+                        {% if category == 'Audio' %}🎵 Audio{% endif %}
+                        {% if category == 'Archives' %}🗜️ Archives{% endif %}
+                        {% if category == 'Executables' %}⚙️ Executables{% endif %}
+                        {% if category == 'Code' %}💻 Code{% endif %}
+                        {% if category == 'Web' %}🌐 Web{% endif %}
+                        {% if category == 'Data' %}📊 Data{% endif %}
+                        {% if category == 'Design' %}🎨 Design{% endif %}
+                        {% if category == 'System' %}🛠️ System{% endif %}
+                        {% if category == 'Fonts' %}🔤 Fonts{% endif %}
+                        {% if category == 'Ebooks' %}📚 Ebooks{% endif %}
+                        {% if category == 'DiskImages' %}💽 Disk Images{% endif %}
+                        {% if category == 'Backup' %}🗃️ Backup{% endif %}
+                        {% if category == 'Certificates' %}🔐 Certificates{% endif %}
+                        {% if category == 'CAD' %}📐 CAD{% endif %}
+                        {% if category == '3D_Models' %}🎲 3D Models{% endif %}
+                        {% if category == 'Email' %}📧 Email{% endif %}
+                        {% if category == 'Calendar' %}📅 Calendar{% endif %}
+                        {% if category == 'Others' %}📦 Others{% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+        
+        {% if errors %}
+        <div class="error-list">
+            <h3 style="color: #e53e3e; margin-bottom: 10px;">⚠️ Errors Encountered:</h3>
+            <ul>
+                {% for error in errors %}
+                <li>{{ error }}</li>
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+        
+        <div class="summary-box" style="text-align: center; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white;">
+            <h3 style="margin-bottom: 15px;">🎉 Organization Completed Successfully!</h3>
+            <p style="font-size: 1.1em;">All files have been moved to their respective subfolders.</p>
+            <p style="margin-top: 10px; opacity: 0.9;">You can now find your organized files in the location shown above.</p>
+        </div>
+        
+    {% else %}
+        <div class="alert alert-error">
+            ❌ Organization failed. Please try again.
+        </div>
+    {% endif %}
+    
+    <div style="text-align: center; margin-top: 30px;">
+        <a href="{{ url_for('index') }}" class="btn btn-back">
+            ← Back to Home
+        </a>
+        {% if success %}
+        <button onclick="openFolder()" class="btn" style="margin-left: 10px;">
+            📁 Open Organized Folder
+        </button>
+        {% endif %}
+    </div>
+</div>
+
+<script>
+function openFolder() {
+    const path = "{{ organized_path|safe }}";
+    // This won't work in browsers due to security restrictions,
+    // but we'll show the path in an alert for now
+    alert("Please navigate to this folder in your file explorer:\n\n" + path);
+}
+
+// Add confetti effect for successful organization
+{% if success and total_files > 0 %}
+document.addEventListener('DOMContentLoaded', function() {
+    // Simple celebration animation
+    const emojis = ['🎉', '🎊', '✨', '🌟', '💫'];
+    
+    for (let i = 0; i < 20; i++) {
+        setTimeout(function() {
+            createFloatingEmoji(emojis[Math.floor(Math.random() * emojis.length)]);
+        }, i * 100);
+    }
+    
+    function createFloatingEmoji(emoji) {
+        const span = document.createElement('span');
+        span.textContent = emoji;
+        span.style.position = 'fixed';
+        span.style.left = Math.random() * window.innerWidth + 'px';
+        span.style.top = window.innerHeight + 'px';
+        span.style.fontSize = '24px';
+        span.style.zIndex = '1000';
+        span.style.pointerEvents = 'none';
+        span.style.transition = 'transform 3s ease-out, opacity 3s ease-out';
+        
+        document.body.appendChild(span);
+        
+        // Animate upward
+        setTimeout(function() {
+            span.style.transform = 'translateY(-' + (window.innerHeight + 100) + 'px) rotate(360deg)';
+            span.style.opacity = '0';
+        }, 100);
+        
+        // Remove element after animation
+        setTimeout(function() {
+            if (span.parentNode) {
+                document.body.removeChild(span);
+            }
+        }, 3000);
+    }
+});
+{% endif %}
+</script>
+{% endblock %}
