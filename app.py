@@ -126,12 +126,15 @@ if __name__ == '__main__':
         os.makedirs(templates_dir)
         print(f"Created templates directory: {templates_dir}")
     
+    # Get port from environment (Render.com sets this) or default to 5000
+    port = int(os.environ.get("PORT", 5000))
+    
     print("🤖 File Organizer Bot - Web Interface")
     print("=" * 50)
     print("🌐 Starting Flask server...")
-    print("📍 Access the web interface at: http://localhost:5000")
+    print(f"📍 Access the web interface at: http://localhost:{port}")
     print("🔧 Press Ctrl+C to stop the server")
     print("=" * 50)
     
-    # Run the Flask app
-    app.run(host='localhost', port=5000, debug=True)
+    # Run the Flask app (0.0.0.0 allows external connections for Render.com)
+    app.run(host='0.0.0.0', port=port, debug=True)
